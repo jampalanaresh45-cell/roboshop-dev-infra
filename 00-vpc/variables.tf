@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 variable "vpc_cidr" {
     default = "10.0.0.0/16"
 }
@@ -29,13 +29,4 @@ variable "private_subnet_cidrs" {
 variable "database_subnet_cidrs" {
     default = ["10.0.21.0/24","10.0.22.0/24"]
 }
-=======
-variable "project_name" {
-  default = "roboshop"
-}
 
-variable "environmrnt" {
-  default = "dev"
-}
-
->>>>>>> f7af98f634f4d9a46e284366d254140b395c1fbd

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module "vpc" {
     source = "git::https://github.com/jampalanaresh45-cell/terraform-aws-vpc.git?ref=main"
    
@@ -22,15 +21,3 @@ module "vpc" {
 
 }
 
-
-
-=======
-module "catalogue" {
-  source = "terraform-aws-modules/security-group/aws"
-
-  name        = "${local.common_name_suffix}-catalogue"
-  description = "Security group for catalogue with custom ports open with in vpc, egress all traffic"
-  vpc_id      = data.aws_ssm_parameter.vpc_id.value
-
-}
->>>>>>> f7af98f634f4d9a46e284366d254140b395c1fbd
