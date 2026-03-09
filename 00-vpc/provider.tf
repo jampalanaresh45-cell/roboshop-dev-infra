@@ -6,13 +6,13 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   bucket = "remote-state-86s-dev"
-  #   key    = "roboshop-dev-vpc"
-  #   region = "us-east-1"
-  #   use_lockfile = true
-  #   encrypt = true
-  # }
+  backend "s3" {
+    bucket = "remote-status-86s-dev"
+    key    = "roboshop-dev-vpc"
+    region = "us-east-1"
+    use_lockfile = false
+    encrypt = true
+  }
 }
 
 provider "aws" {
