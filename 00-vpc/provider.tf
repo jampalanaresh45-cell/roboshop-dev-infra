@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      version = "6.35.0"
+      version = "6.35.1"
     }
   }
 
@@ -10,7 +10,7 @@ terraform {
     bucket = "remote-state-86s-dev"
     key    = "roboshop-dev-vpc"
     region = "us-east-1"
-    use_lockfile = true
+    use_lockfile = false
     encrypt = true
   }
 }
