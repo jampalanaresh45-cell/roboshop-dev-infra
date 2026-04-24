@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "86s-remote-status"
+    bucket = "naresh-86s-remote-state"
     key    = "remote-dev-backend-alb"
     region = "us-east-1"
     use_lockfile = true
