@@ -78,3 +78,43 @@ provisioner "remote-exec" {
     ]
   }
 }
+
+resource "aws_instance" "rabbitmq" {
+    ami = local.ami_id
+    instance_type = "t2.micro"
+    
+    vpc_security_group_ids = [local.rabbitmq_sg_id]
+    subnet_id = local.database_subnet_id
+    
+    tags = merge(
+      local.common_tags,
+       {
+          Name = "${local.common_name_suffix}-rabbitmq" ### roboshop-dev-rabbitmq
+      }
+    )      
+} 
+
+resource "terraform_data" "rabbitmq" {
+  triggers_replace = [
+    aws_instance.rabbitmq.id,
+  ]
+    connection {
+        type     = "ssh"
+        user     = "ec2-user"
+        password = "DevOps321"
+        host     = aws_instance.rabbitmq.private_ip
+}
+
+provisioner "file" {
+  source = "bootstrap.sh"
+  destination = "/tmp/bootstrap.sh"
+}
+provisioner "remote-exec" {
+    inline = [
+        
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh rabbitmq"
+        # "sudo sh /tmp/bootstrap.sh mongodb"
+    ]
+  }
+}
