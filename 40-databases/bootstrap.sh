@@ -1,5 +1,6 @@
 #!/bin/bash
 component=$1
+environment=$2
 dnf install ansible -y
 # ansible-pull -U https://github.com/jampalanaresh45-cell/ansible-roboshop-roles-tf.git -e component=$component main.yaml
 
@@ -26,4 +27,4 @@ else
     cd $ANSIBLE_DIR
 fi
 
-ansible-playbook -e component=$component main.yaml
+ansible-playbook -e component=$component -e environment=$environment main.yaml
